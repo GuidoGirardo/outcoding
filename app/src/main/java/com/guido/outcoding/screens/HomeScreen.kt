@@ -58,7 +58,7 @@ fun HomeScreen(navController: NavController, viewModel: AppViewModel) {
                             .clip(RoundedCornerShape(16.dp))
                     )
                     Column(
-                        modifier = Modifier.padding(end = 20.dp, bottom = 10.dp)
+                        modifier = Modifier.padding(top = 5.dp, end = 20.dp, bottom = 10.dp, start = 20.dp)
                     ) {
                         item.owner?.let { owner ->
                             if(owner == "null") Text(text = "Owner: none", fontWeight = FontWeight.Bold)
@@ -69,7 +69,7 @@ fun HomeScreen(navController: NavController, viewModel: AppViewModel) {
                         Spacer(modifier = Modifier.height(20.dp))
                         if(item.tags.isNotEmpty()) {
                             Text(
-                                text = "${item.tags.take(6).joinToString()}",
+                                text = "${item.tags.joinToString(", ")}",
                                 modifier = Modifier
                                     .background(Purple40, RoundedCornerShape(5.dp))
                                     .padding(horizontal = 10.dp, vertical = 3.dp),

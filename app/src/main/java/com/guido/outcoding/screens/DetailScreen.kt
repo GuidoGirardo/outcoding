@@ -33,6 +33,11 @@ fun DetailScreen(navController: NavController){
     val id = navController.currentBackStackEntry?.arguments?.getString("id") ?: ""
     val imageUrl = "https://cataas.com/cat/$id"
     val tags = navController.currentBackStackEntry?.arguments?.getString("tags") ?: ""
+    val newTags = if (tags.length >= 2) {
+        tags.substring(1, tags.length - 1)
+    } else {
+        ""
+    }
     val owner = navController.currentBackStackEntry?.arguments?.getString("owner") ?: ""
     val updatedAt = navController.currentBackStackEntry?.arguments?.getString("updatedAt") ?: ""
     val createdAt = navController.currentBackStackEntry?.arguments?.getString("createdAt") ?: ""
@@ -50,24 +55,26 @@ fun DetailScreen(navController: NavController){
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .height(150.dp)
-                .width(115.dp)
+                .height(280.dp)
+                .width(150.dp)
                 .clip(RoundedCornerShape(16.dp))
         )
         Spacer(modifier = Modifier.height(40.dp))
         if(owner == "null") Text(text = "Owner: none", fontWeight = FontWeight.Bold, fontSize = 25.sp)
         else Text(text = "Owner: $owner", fontWeight = FontWeight.Bold, fontSize = 25.sp, color = Purple40)
         Spacer(modifier = Modifier.height(30.dp))
-        Text(
-            text = tags,
-            modifier = Modifier
-                .background(Purple40, RoundedCornerShape(5.dp))
-                .padding(8.dp),
-            fontSize = 20.sp,
-            color = Color.White,
-            textAlign = TextAlign.Center
-        )
-        Spacer(modifier = Modifier.height(30.dp))
+        if(newTags != "") {
+            Text(
+                text = newTags,
+                modifier = Modifier
+                    .background(Purple40, RoundedCornerShape(5.dp))
+                    .padding(8.dp),
+                fontSize = 20.sp,
+                color = Color.White,
+                textAlign = TextAlign.Center
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+        }
         Text("Created: $createdAt",
             modifier = Modifier.fillMaxWidth().padding(horizontal = 20.dp),
             textAlign = TextAlign.Center, fontSize = 15.sp)
