@@ -1,7 +1,7 @@
 package com.guido.outcoding.screens
 
 import android.util.Log
-import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -17,8 +17,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
 import com.guido.outcoding.viewmodel.AppViewModel
+import coil.compose.AsyncImage
 
 @Composable
 fun HomeScreen(navController: NavController, viewModel: AppViewModel) {
@@ -31,6 +31,11 @@ fun HomeScreen(navController: NavController, viewModel: AppViewModel) {
                 modifier = Modifier
                     .padding(16.dp)
                     .fillMaxWidth()
+                    .clickable {
+                        navController.navigate(
+                            "detail?id=${item.id}"
+                        )
+                    }
             ) {
                 val imageUrl = "https://cataas.com/cat/${item.id}"
                 Text(text = "ID: ${item.id}")
@@ -41,14 +46,14 @@ fun HomeScreen(navController: NavController, viewModel: AppViewModel) {
                 Text(text = "Created At: ${item.createdAt}")
                 Text(text = "Updated At: ${item.updatedAt}")
                 Log.i("xd", imageUrl)
-                Image(
-                    painter = rememberImagePainter(imageUrl),
+                AsyncImage(
+                    model = imageUrl,
                     contentDescription = null,
+                    contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .height(150.dp)
                         .width(115.dp)
-                        .clip(RoundedCornerShape(16.dp)),
-                    contentScale = ContentScale.Crop
+                        .clip(RoundedCornerShape(16.dp))
                 )
             }
         }
