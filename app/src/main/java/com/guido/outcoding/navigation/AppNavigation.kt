@@ -7,16 +7,17 @@ import com.guido.outcoding.screens.DetailScreen
 import com.guido.outcoding.screens.HomeScreen
 import androidx.navigation.compose.composable
 import com.guido.outcoding.model.ModelItem
+import com.guido.outcoding.viewmodel.AppViewModel
 
 @Composable
-fun AppNavigation(items: List<ModelItem>) {
+fun AppNavigation(viewModel: AppViewModel) {
 
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = AppScreens.HomeScreen.route) {
 
         composable(route = AppScreens.HomeScreen.route) {
-            HomeScreen(navController, items)
+            HomeScreen(navController, viewModel)
         }
         composable(route = AppScreens.DetailScreen.route) {
             DetailScreen(navController)

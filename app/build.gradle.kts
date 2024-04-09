@@ -70,5 +70,7 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.7.7")
     // gson
     implementation("com.google.code.gson:gson:2.8.8")
+    // imagenes y gif
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
 }
