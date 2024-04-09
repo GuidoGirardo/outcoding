@@ -1,7 +1,11 @@
 package com.guido.outcoding.screens
 
 import android.util.Log
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -12,13 +16,18 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.guido.outcoding.viewmodel.AppViewModel
 import coil.compose.AsyncImage
+import com.guido.outcoding.ui.theme.Purple40
 
 @Composable
 fun HomeScreen(navController: NavController, viewModel: AppViewModel) {
@@ -33,28 +42,43 @@ fun HomeScreen(navController: NavController, viewModel: AppViewModel) {
                     .fillMaxWidth()
                     .clickable {
                         navController.navigate(
-                            "detail?id=${item.id}"
+                            "detail?id=${item.id}&owner=${item.owner}&createdAt=${item.createdAt}&updatedAt=${item.updatedAt}&tags=${item.tags}"
                         )
                     }
             ) {
-                val imageUrl = "https://cataas.com/cat/${item.id}"
-                Text(text = "ID: ${item.id}")
-                Text(text = "Tags: ${item.tags.joinToString()}")
-                item.owner?.let { owner ->
-                    Text(text = "Owner: $owner")
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    val imageUrl = "https://cataas.com/cat/${item.id}"
+                    AsyncImage(
+                        model = imageUrl,
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .height(150.dp)
+                            .width(115.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                    )
+                    Column(
+                        modifier = Modifier.padding(end = 20.dp, bottom = 10.dp)
+                    ) {
+                        item.owner?.let { owner ->
+                            if(owner == "null") Text(text = "Owner: none", fontWeight = FontWeight.Bold)
+                            else Text(text = "Owner: $owner", fontWeight = FontWeight.Bold, color = Purple40)
+                        }
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Text(text = "Created: ${item.createdAt.substring(0, 15)}")
+                        Spacer(modifier = Modifier.height(20.dp))
+                        if(item.tags.isNotEmpty()) {
+                            Text(
+                                text = "${item.tags.take(6).joinToString()}",
+                                modifier = Modifier
+                                    .background(Purple40, RoundedCornerShape(5.dp))
+                                    .padding(horizontal = 10.dp, vertical = 3.dp),
+                                fontSize = 15.sp,
+                                color = Color.White
+                            )
+                        }
+                    }
                 }
-                Text(text = "Created At: ${item.createdAt}")
-                Text(text = "Updated At: ${item.updatedAt}")
-                Log.i("xd", imageUrl)
-                AsyncImage(
-                    model = imageUrl,
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .height(150.dp)
-                        .width(115.dp)
-                        .clip(RoundedCornerShape(16.dp))
-                )
             }
         }
     }
