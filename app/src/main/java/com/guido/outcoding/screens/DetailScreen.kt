@@ -56,7 +56,7 @@ fun DetailScreen(navController: NavController){
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .height(280.dp)
-                .width(150.dp)
+                .width(200.dp)
                 .clip(RoundedCornerShape(16.dp))
         )
         Spacer(modifier = Modifier.height(40.dp))

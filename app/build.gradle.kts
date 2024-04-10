@@ -76,5 +76,4 @@ dependencies {
     // test
     testImplementation("com.google.truth:truth:1.1.3")
     testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
-
 }
