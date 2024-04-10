@@ -73,6 +73,8 @@ dependencies {
     // imagenes y gif
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("io.coil-kt:coil-gif:2.6.0")
-
+    // test
+    testImplementation("com.google.truth:truth:1.1.3")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.3.1")
 
 }

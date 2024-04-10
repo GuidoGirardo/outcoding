@@ -13,7 +13,7 @@ class AppViewModel: ViewModel() {
         return items
     }
 
-    private fun parseJson(jsonString: String): List<ModelItem> {
+    fun parseJson(jsonString: String): List<ModelItem> {
         return Gson().fromJson(jsonString, Array<ModelItem>::class.java).toList()
     }
 }
