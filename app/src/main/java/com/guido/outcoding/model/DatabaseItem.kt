@@ -4,20 +4,6 @@ fun DatabaseItem(): String{
     val jsonString = """
             [
                 {
-                    "_id":"rV1MVEh0Af2Bm4O0",
-                    "tags":["kitten", "several", "gif"],
-                    "owner":"null",
-                    "createdAt":"Sun May 01 2022 20:57:11 GMT+0000 (Coordinated Universal Time)",
-                    "updatedAt":"Tue Oct 11 2022 07:52:32 GMT+0000 (Coordinated Universal Time)"
-                },
-                {
-                    "_id":"ZHrXPVRJniYPR6pp",
-                    "tags":["gif"],
-                    "owner":"null",
-                    "createdAt":"Wed Jun 01 2022 22:29:22 GMT+0000 (Coordinated Universal Time)",
-                    "updatedAt":"Tue Oct 11 2022 07:52:32 GMT+0000 (Coordinated Universal Time)"
-                },
-                {
                     "_id":"2VgBUv9MaBwk5qnK",
                     "tags":["manspreading"],
                     "owner":"null",
@@ -71,6 +57,20 @@ fun DatabaseItem(): String{
                     "tags":["small cat", "brazilian", "brazilian cat", "brasileira", "female cat", "female", "black & white", "donna", "londrinense", "londrina", "cute cat", "cute"],
                     "owner":"ricardo.ricardo815",
                     "createdAt":"Wed Sep 28 2022 02:36:22 GMT+0000 (Coordinated Universal Time)",
+                    "updatedAt":"Tue Oct 11 2022 07:52:32 GMT+0000 (Coordinated Universal Time)"
+                },
+                {
+                    "_id":"rV1MVEh0Af2Bm4O0",
+                    "tags":["kitten", "several", "gif"],
+                    "owner":"null",
+                    "createdAt":"Sun May 01 2022 20:57:11 GMT+0000 (Coordinated Universal Time)",
+                    "updatedAt":"Tue Oct 11 2022 07:52:32 GMT+0000 (Coordinated Universal Time)"
+                },
+                {
+                    "_id":"ZHrXPVRJniYPR6pp",
+                    "tags":["gif"],
+                    "owner":"null",
+                    "createdAt":"Wed Jun 01 2022 22:29:22 GMT+0000 (Coordinated Universal Time)",
                     "updatedAt":"Tue Oct 11 2022 07:52:32 GMT+0000 (Coordinated Universal Time)"
                 }
             ]
